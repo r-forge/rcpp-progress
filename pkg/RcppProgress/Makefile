@@ -29,9 +29,9 @@ Rd2.pdf: ${NAMESPACE} ${DESCRIPTION} ${R_SOURCES}
 example:
 	mkdir -p .install
 	R CMD build .
-	R CMD INSTALL -l .install RcppProgress_0.1.tar.gz
+	R CMD INSTALL -l .install RcppProgress_0.2.tar.gz
 	R CMD build inst/examples/RcppProgressExample
-	R CMD INSTALL -l .install RcppProgressExample_0.1.tar.gz
+	R CMD INSTALL -l .install RcppProgressExample_0.2.tar.gz
 	
 # run R CMD check
 check: ${NAMESPACE} ${DESCRIPTION} clean

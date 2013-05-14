@@ -23,9 +23,8 @@ void test_sequential2(int max, int nb, bool display_progress) {
 
 	Progress p(max, display_progress);
 	for (int i = 0; i < max; ++i) {
-		if ( ! p.is_aborted() ) {
+		if ( p.increment() ) {
 			your_long_computation(nb);
-			p.increment();
 		}
 	}
 }
@@ -41,9 +40,8 @@ void test_multithreaded_omp2(int max, int nb, int threads, bool display_progress
 	Progress p(max, display_progress); // create the progress monitor
 #pragma omp parallel for schedule(dynamic)
 	for (int i = 0; i < max; ++i) {
-		if ( ! p.is_aborted() ) { // the only way to exit an OpenMP loop
+		if ( ! p.increment() ) { // the only way to exit an OpenMP loop
 			your_long_computation(nb);
-			p.increment(); // update the progress
 		}
 	}
 }

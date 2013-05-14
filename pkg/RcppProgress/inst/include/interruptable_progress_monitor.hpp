@@ -89,7 +89,7 @@ public: // ===== PBLIC MAIN INTERFACE =====
 
 		if ( is_master() )  {
 			check_user_interrupt_master();
-			update_display();
+//			update_display();
 		}
 		return is_aborted();
 	}
@@ -127,9 +127,9 @@ public: // ===== methods for MASTER thread =====
 	 */
 	bool update_master(unsigned long current) {
 		// try to make it as fast as possible
-		unsigned long last = _current;
+//		unsigned long last = _current;
 		_current = current;
-		if ( (current - last)*100 > _max )
+//		if ( (current - last)*100 > _max )
 			update_display();
 		return ! is_aborted();
 	}
